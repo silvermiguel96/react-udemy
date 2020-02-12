@@ -4,14 +4,25 @@ import './App.css';
 
 class Text extends Component {
   render() {
-    const texoSegundoBool = this.props.isActivated ? 'On' : 'Off'
-    const mappedNumbers = this.props.arrayOfNumbers.map(n => n * 2)
+
+    const {
+      arrayOfNumbers,
+      objectWithInfo,
+      isActivated,
+      number,
+      title
+    } = this.props
+
+    const texoSegundoBool = isActivated ? 'On' : 'Off'
+    const mappedNumbers = arrayOfNumbers.map(n => n * 2)
 
     return (
       <div>
+        {title}
         <p>{mappedNumbers.join(', ')}</p>
         <p>{texoSegundoBool}</p>
-        <p>{this.props.number}</p>
+        <p>{number}</p>
+        <p>{objectWithInfo.key2}</p>
       </div>
     )
   }
@@ -28,6 +39,7 @@ class App extends Component {
               objectWithInfo={{ key: "fistValue", key2: "otherValue" }}
               isActivated
               number={2}
+              title={<h2>Este es un titulo</h2>}
             />
 
           </div>
